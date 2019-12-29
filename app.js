@@ -16,6 +16,7 @@ const plantsRoute = require('./routes/plantsRoute');
 
 app.get('/', plantsRoute.getPlants);
 app.post('/addPlant', plantsRoute.addPlants);
+app.delete('/:id', plantsRoute.deletePlant);
 app.get('/:id', plantsRoute.findAPlant);
 
 // Start Server
