@@ -1,0 +1,35 @@
+GET  http://localhost:3000/
+
+###
+
+POST http://localhost:3000/addPlant
+Content-Type: application/json
+
+{
+    "name": "Aloe Vera", 
+    "description": "Green Queen", 
+    "care": "Lots of Love", 
+    "price": 15, 
+    "image": "https://target.scene7.com/is/image/Target/GUEST_be7e6313-15ac-4e1c-94b8-8af5595d6cb6?wid=488&hei=488&fmt=pjpeg"
+}
+
+###
+
+DELETE http://localhost:3000/5e090cf364ee551faf1f1e76
+
+###
+
+GET http://localhost:3000/5e090eb1ac4b0d20dc9c712a
+
+###
+
+PATCH http://localhost:3000/5e090eb1ac4b0d20dc9c712a
+Content-Type: application/json
+
+{
+    "name": "Aloe Vera Super Size", 
+    "description": "Green Queen", 
+    "care": "Lots of Love", 
+    "price": 25, 
+    "image": "https://target.scene7.com/is/image/Target/GUEST_be7e6313-15ac-4e1c-94b8-8af5595d6cb6?wid=488&hei=488&fmt=pjpeg"
+}
