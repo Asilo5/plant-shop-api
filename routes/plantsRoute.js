@@ -39,8 +39,32 @@ module.exports = {
     },
 
     updatePlant: (req, res) => {
-        PlantModel.update(req.params.id, req.body)
-          .then((plant) => res.json({ success: true, plants: plant }))
+        PlantModel.findById(req.params.id)
+          .then((plant) => {
+
+            if(req.body.name !== null) {
+                plant.name = req.body.name
+            }
+        
+            if(req.body.description !== null) {
+                plant.description = req.body.description
+            }
+        
+            if(req.body.care !== null) {
+                plant.care = req.body.care
+            }
+        
+            if(req.body.price !== null) {
+                plant.price = req.body.price
+            }
+        
+            if(req.body.image !== null) {
+                plant.image = req.body.image
+            } 
+
+              plant.save();
+              res.json({ success: true, plants: plant })
+          })
           .catch((err) => res.status(500).json({ success: false, plants: err.message }))
     }
 
