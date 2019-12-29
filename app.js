@@ -8,7 +8,8 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
 .then(() => console.log('connected to DB!'))
 .catch((err) => console.log(err))
 
-
+// Middleware
+app.use(express.json());
 
 
 // Start Server
