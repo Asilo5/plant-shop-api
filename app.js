@@ -18,6 +18,7 @@ app.get('/', plantsRoute.getPlants);
 app.post('/addPlant', plantsRoute.addPlants);
 app.delete('/:id', plantsRoute.deletePlant);
 app.get('/:id', plantsRoute.findAPlant);
+app.patch('/:id', plantsRoute.updatePlant);
 
 // Start Server
 app.listen(3000, () => console.log('Server started on port 3000...'))

@@ -36,6 +36,12 @@ module.exports = {
             res.json({ success: true, plants: plant })
          })
          .catch((err) => res.status(500).json({ success: false, plants: err.message }))
+    },
+
+    updatePlant: (req, res) => {
+        PlantModel.update(req.params.id, req.body)
+          .then((plant) => res.json({ success: true, plants: plant }))
+          .catch((err) => res.status(500).json({ success: false, plants: err.message }))
     }
 
 };
