@@ -6,21 +6,21 @@ const PlantSchema = new Schema({
         type: String,
         required: true
     },
-       description: {
+    description: {
         type: String,
         required: true
     },
-       care: {
+    care: {
         type: String,
         required: true
     },
-       price: {
+    price: {
         type: Number,
         required: true
     },
-       image: {
-           type: String,
-           required: true
+    image: {
+        type: String,
+        required: true
     }
 })
 

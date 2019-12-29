@@ -11,6 +11,10 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
 // Middleware
 app.use(express.json());
 
+// Routes
+const plantsRoute = require('./routes/plantsRoute');
+
+app.get('/', plantsRoute.getPlants);
 
 // Start Server
 app.listen(3000, () => console.log('Server started on port 3000...'))
