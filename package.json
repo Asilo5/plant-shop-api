@@ -4,7 +4,7 @@
   "description": "Api that holds all plants info for Plant Shop",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "author": "Consuelo Sierra <asierralopez526@gmail.com>",
   "license": "ISC",
