@@ -15,6 +15,8 @@ app.use(express.json());
 const plantsRoute = require('./routes/plantsRoute');
 
 app.get('/', plantsRoute.getPlants);
+app.post('/addPlant', plantsRoute.addPlants);
+app.get('/:id', plantsRoute.findAPlant);
 
 // Start Server
 app.listen(3000, () => console.log('Server started on port 3000...'))
