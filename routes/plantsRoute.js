@@ -31,7 +31,11 @@ module.exports = {
     },
 
     findAPlant: (req, res) => {
-       
+       PlantModel.findById(req.params.id)
+         .then((plant) => {
+            res.json({ success: true, plants: plant })
+         })
+         .catch((err) => res.status(500).json({ success: false, plants: err.message }))
     }
 
 };
