@@ -7,9 +7,12 @@
     "node": "12.1.0"
   },
   "scripts": {
-    "start": "nodemon app.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "nodemon app.js"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "Consuelo Sierra <asierralopez526@gmail.com>",
   "license": "ISC",
   "dependencies": {
