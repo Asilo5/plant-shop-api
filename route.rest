@@ -6,20 +6,20 @@ POST http://localhost:3000/addPlant
 Content-Type: application/json
 
 {
-    "name": "Aloe Vera", 
-    "description": "Green Queen", 
+    "name": "Cannabis", 
+    "description": "Stanky plant", 
     "care": "Lots of Love", 
-    "price": 15, 
+    "price": 50, 
     "image": "https://target.scene7.com/is/image/Target/GUEST_be7e6313-15ac-4e1c-94b8-8af5595d6cb6?wid=488&hei=488&fmt=pjpeg"
 }
 
 ###
 
-DELETE http://localhost:3000/5e090cf364ee551faf1f1e76
+DELETE http://localhost:3000/5e1605efe484964445ac6415
 
 ###
 
-GET http://localhost:3000/5e090eb1ac4b0d20dc9c712a
+GET http://localhost:3000/5e090d1a64ee551faf1f1e77
 
 ###
 
