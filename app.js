@@ -25,5 +25,7 @@ app.patch('/:id', plantsRoute.updatePlant);
 // Start Server
 // app.listen(3000, () => console.log('Server started on port 3000...'))
 
-const port = process.env.PORT || 3000;
+const cors = require("cors")
+app.use(cors())
+const port = process.env.PORT || 3001;
 app.listen(port, console.log("MongoDB is Connected..."));
