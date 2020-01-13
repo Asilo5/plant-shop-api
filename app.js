@@ -20,7 +20,7 @@ const plantsRoute = require('./routes/plantsRoute');
 
 app.get('/', cors(), plantsRoute.getPlants);
 app.post('/addPlant', cors(), plantsRoute.addPlants);
-app.delete('/:id', cors(), plantsRoute.deletePlant);
+app.delete('/deletePlant/:id', cors(), plantsRoute.deletePlant);
 app.get('/:id', cors(), plantsRoute.findAPlant);
 app.patch('/:id', cors(), plantsRoute.updatePlant);
 

@@ -1,8 +1,8 @@
-GET  http://localhost:3000/
+GET  http://localhost:3001/
 
 ###
 
-POST http://localhost:3000/addPlant
+POST http://localhost:3001/addPlant
 Content-Type: application/json
 
 {
@@ -15,15 +15,15 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/5e1605efe484964445ac6415
+DELETE http://localhost:3001/deletePlant/5e179590cd54379121b4153d
 
 ###
 
-GET http://localhost:3000/5e179590cd54379121b4153d
+GET http://localhost:3001/5e179590cd54379121b4153d
 
 ###
 
-PATCH http://localhost:3000/5e090eb1ac4b0d20dc9c712a
+PATCH http://localhost:3001/5e090eb1ac4b0d20dc9c712a
 Content-Type: application/json
 
 {
