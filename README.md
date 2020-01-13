@@ -1,5 +1,6 @@
 # Plant Shop API
 
+API built for the [Plant Shop repo](https://github.com/Asilo5/plant-shop).
 
 ## Created by:
 [Amanda Consuelo Sierra](https://github.com/Asilo5)
