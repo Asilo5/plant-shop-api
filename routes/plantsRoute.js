@@ -1,71 +1,102 @@
 const PlantModel = require('../models/Plant-Model');
 
 module.exports = {
-    getPlants: (req, res) => {
-       PlantModel.find()
-         .then((plants) => res.json({ success: true, plants: plants }))
-         .catch((err) => res.status(500).json({ success: false, plants: err.message }))
-    },
-
-    addPlants: (req, res) => {
-      const plant = new PlantModel({
-        name: req.body.name,
-        description: req.body.description,
-        care: req.body.care,
-        price: req.body.price,
-        image: req.body.image
-      });
-
-      plant.save()
-        .then(plants => res.json({ success: true, plants: plants }))
-        .catch((err) => res.status(500).json({ success: false, plants: err.message }))
-    },
-
-    deletePlant: (req, res) => {
-       PlantModel.findById(req.params.id)
-         .then((plants) => {
-             plants.remove();
-             res.json({ success: true, plants: plants })
+    getPlants: async (req, res, next) => {
+      // fetching all plants
+      try {
+        const plants = await PlantModel.find(); 
+        res.status(200).json({
+          success:true,
+          data : plants})
+      } catch (error) {
+         res.status(404).json({
+           sucess: false,
+            error
          })
-         .catch((err) => res.status(500).json({ success: false, plants: err.message }))
+      }
+
     },
 
-    findAPlant: (req, res) => {
-       PlantModel.findById(req.params.id)
-         .then((plant) => {
-            res.json({ success: true, plants: plant })
+    addPlants: async (req, res, next) => {
+      try {
+            const {name, description, care, price, image} = req.body;
+      
+            const plant = await PlantModel.create({
+              name,
+              description,
+              care,
+              price,
+              image
+            });
+
+            res.status(200).json({
+              success: true,
+              data: plant
+            })
+        
+      } catch (error) {
+         res.status(400).json({
+           success: false,
+           error
          })
-         .catch((err) => res.status(500).json({ success: false, plants: err.message }))
+      }
+
     },
 
-    updatePlant: (req, res) => {
-        PlantModel.findById(req.params.id)
-          .then((plant) => {
+    deletePlant: async (req, res, next) => {
+      try {
+          const plant = await PlantModel.findById(req.params.id);
+        //  check whether the id exists
+          if (!plant){
+            return res.status(400).json({success: false, message: `plant does not exist with the id ${req.params.id}`})
+          }
+          plant.remove();
+          res.status(200).json({ 
+            success: true, 
+            plants: plants 
+          });
+        
+      } catch (error) {
+        res.status(400).json({ success: false, plants: error.message })
+      }
+    },
 
-            if(req.body.name !== null) {
-                plant.name = req.body.name
-            }
-        
-            if(req.body.description !== null) {
-                plant.description = req.body.description
-            }
-        
-            if(req.body.care !== null) {
-                plant.care = req.body.care
-            }
-        
-            if(req.body.price !== null) {
-                plant.price = req.body.price
-            }
-        
-            if(req.body.image !== null) {
-                plant.image = req.body.image
-            } 
+    findAPlant: async (req, res, next) => {
+      try {
+        const plant = await PlantModel.findById(req.params.id);
+      //  check whether the id exists
+        if (!plant){
+          return res.status(400).json({success: false, message: `plant does not exist with the id ${req.params.id}`})
+        }
+        res.status(200).json({ 
+          success: true, 
+          plants: plant 
+        });
+      
+    } catch (error) {
+      res.status(500).json({ success: false, plants: error.message })
+    }
+    },
 
-              plant.save();
-              res.json({ success: true, plants: plant })
-          })
-          .catch((err) => res.status(500).json({ success: false, plants: err.message }))
+    updatePlant: async (req, res, next) => {
+      try {
+            const plant = await PlantModel.findByIdAndUpdate(req.params.id, req.body, {
+              new: true,
+              runValidators: true
+            })
+            // check whether the plants exists or not
+            if(!plant){
+              return res.status(400).json({success: false, message: `plant does not exist with the id ${req.params.id}`})
+            }
+            // send the response
+            res.status(200).json({
+              success: true,
+              data: plant
+            })
+        
+      } catch (error) {
+            res.status(500).json({ success: false, error: error.message })
+      }
     }
 
 };
