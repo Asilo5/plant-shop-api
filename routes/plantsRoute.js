@@ -9,10 +9,7 @@ module.exports = {
           success:true,
           data : plants})
       } catch (error) {
-         res.status(404).json({
-           sucess: false,
-            error
-         })
+          next(error)
       }
 
     },
@@ -35,10 +32,7 @@ module.exports = {
             })
         
       } catch (error) {
-         res.status(400).json({
-           success: false,
-           error
-         })
+        next(error)
       }
 
     },
@@ -57,7 +51,7 @@ module.exports = {
           });
         
       } catch (error) {
-        res.status(400).json({ success: false, plants: error.message })
+        next(error)
       }
     },
 
@@ -74,7 +68,7 @@ module.exports = {
         });
       
     } catch (error) {
-      res.status(500).json({ success: false, plants: error.message })
+      next(error)
     }
     },
 
@@ -95,7 +89,7 @@ module.exports = {
             })
         
       } catch (error) {
-            res.status(500).json({ success: false, error: error.message })
+            next(error)
       }
     }
 
