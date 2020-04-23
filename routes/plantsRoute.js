@@ -47,7 +47,7 @@ module.exports = {
           plant.remove();
           res.status(200).json({ 
             success: true, 
-            plants: plants 
+            data: {} 
           });
         
       } catch (error) {
